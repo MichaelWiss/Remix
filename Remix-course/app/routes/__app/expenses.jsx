@@ -14,8 +14,8 @@ const DUMMY_EXPENSES = [
 ];
 
 // /expenses => shared layout
-import { Outlet } from '@remix-run/react';
-import expensesStyles from '~/styles/expenses.css';
+import { Link, Outlet } from '@remix-run/react';
+import { FaPlus, FaDownload } from 'react-icons/fa';
 import ExpensesList from '~/components/expenses/ExpensesList';
 
 
@@ -25,6 +25,15 @@ export default function ExpensesLayout() {
     <>
     <Outlet />
     <main>
+        <section id="expenses-actions">
+            <Link to="add">
+                <FaPlus />
+                <span>Add Expense</span>
+            </Link>
+                <a href="/expenses/raw"></a>
+                <FaDownload />
+                <span>Load Raw Data</span>
+        </section>
         <ExpensesList expenses={DUMMY_EXPENSES} />
     </main>
     </>
