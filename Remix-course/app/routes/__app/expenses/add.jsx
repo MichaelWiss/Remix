@@ -25,7 +25,11 @@ export async function action({ request }) {
     const expenseData = Object.fromEntries(formData);
     console.log(expenseData, formData);
 
+    try {
     validateExpenseInput(expenseData);
+ } catch (error) {
+    return error;
+ }
 
 
 
