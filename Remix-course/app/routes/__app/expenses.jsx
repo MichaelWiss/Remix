@@ -1,5 +1,5 @@
 
-import { Link, Outlet } from '@remix-run/react';
+import { Link, Outlet, useLoaderData } from '@remix-run/react';
 import { FaPlus, FaDownload } from 'react-icons/fa';
 import ExpensesList from '~/components/expenses/ExpensesList';
 import { getExpenses } from '../../data/expenses.server';
@@ -7,6 +7,10 @@ import { getExpenses } from '../../data/expenses.server';
 
 
 export default function ExpensesLayout() {
+    const expenses = useLoaderData();
+    console.log(expenses);
+
+
     return (
     <>
     <Outlet />
@@ -27,6 +31,7 @@ export default function ExpensesLayout() {
 }
 
 export async function loader({}) {
-    getExpenses();
+    const expenses = await getExpenses(expenses);
+    return expenses;
 }
 
