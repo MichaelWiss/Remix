@@ -12,26 +12,26 @@ export default function ExpensesLayout() {
 
 
     return (
-    <>
-    <Outlet />
-    <main>
-        <section id="expenses-actions">
-            <Link to="add">
-                <FaPlus />
-                <span>Add Expense</span>
-            </Link>
-                <a href="/expenses/raw"></a>
-                <FaDownload />
-                <span>Load Raw Data</span>
-        </section>
-        <ExpensesList expenses={} />
-    </main>
+        <>
+        <Outlet />
+        <main>
+            <section id="expenses-actions">
+                <Link to="add">
+                    <FaPlus />
+                    <span>Add Expense</span>
+                </Link>
+                    <a href="/expenses/raw">
+                    <FaDownload />
+                    <span>Load Raw Data</span>
+                    </a>
+            </section>
+            <ExpensesList expenses={expenses} />
+        </main>
     </>
     );
 }
 
-export async function loader({}) {
-    const expenses = await getExpenses(expenses);
-    return expenses;
+export function loader({}) {
+    return getExpenses();
 }
 
