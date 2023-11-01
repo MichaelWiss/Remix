@@ -23,3 +23,13 @@ try {
    throw error; 
  }
 }
+
+export async function getExpense(id) {
+  try {
+    const expense = await prisma.expense.findFirst({where: { id }});
+    return expense;
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+}
