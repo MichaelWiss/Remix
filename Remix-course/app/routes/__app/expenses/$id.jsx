@@ -25,3 +25,9 @@ export default function UpdateExpensesPage() {
 //     const expense = await getExpense(expenseId)
 //     return expense;
 // }
+
+export async function action(params, request) {
+    const expenseId = params.id;
+    const formData = await request.formData();
+    const expenseData = Object.fromEntries(formData);
+}
