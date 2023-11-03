@@ -1,8 +1,11 @@
 
 // /expenses/<some-id> => /expenses/expense-1, /expense/e-1
 import { useLoaderData, useNavigate } from '@remix-run/react';
+import { redirect } from "@remix-run/node"; // or cloudflare/deno
 import ExpenseForm from '~/components/expenses/ExpenseForm';
 import Modal from '~/components/util/Modal';
+import { updateExpense } from '../../../data/expenses.server';
+import { validateExpenseInput } from '../../../data/validation.server';
 // import { getExpense } from '../../../data/expenses.server';
 
 export default function UpdateExpensesPage() {
@@ -26,8 +29,17 @@ export default function UpdateExpensesPage() {
 //     return expense;
 // }
 
-export async function action(params, request) {
+export async function action({params, request}) {
     const expenseId = params.id;
     const formData = await request.formData();
     const expenseData = Object.fromEntries(formData);
+
+    try {
+        validateExpenseInput(expenseData);
+    } catch (error) {
+            return error;
+    }
+
+    await updateExpense(expenseId, expenseData);
+    return redirect('/expenses');
 }

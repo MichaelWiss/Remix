@@ -27,9 +27,9 @@ export async function action({ request }) {
 
     try {
     validateExpenseInput(expenseData);
- } catch (error) {
-    return error;
- }
+    } catch (error) {
+        return error;
+    }
 
 
 
