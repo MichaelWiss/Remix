@@ -4,7 +4,7 @@ import { useLoaderData, useNavigate } from '@remix-run/react';
 import { redirect } from "@remix-run/node"; // or cloudflare/deno
 import ExpenseForm from '~/components/expenses/ExpenseForm';
 import Modal from '~/components/util/Modal';
-import { updateExpense } from '../../../data/expenses.server';
+import { deleteExpense, updateExpense } from '../../../data/expenses.server';
 import { validateExpenseInput } from '../../../data/validation.server';
 // import { getExpense } from '../../../data/expenses.server';
 
@@ -31,6 +31,7 @@ export default function UpdateExpensesPage() {
 
 export async function action({params, request}) {
     const expenseId = params.id;
+    if (request.method === 'PATCH') {
     const formData = await request.formData();
     const expenseData = Object.fromEntries(formData);
 
@@ -42,4 +43,8 @@ export async function action({params, request}) {
 
     await updateExpense(expenseId, expenseData);
     return redirect('/expenses');
+    } else if(request.method === 'DELETE'){
+        await deleteExpense(expenseId);
+        return redirect('/expenses');
+    }
 }
