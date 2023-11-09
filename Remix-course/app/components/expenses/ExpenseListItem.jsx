@@ -1,8 +1,17 @@
-import { Form, Link } from '@remix-run/react';
+import { Form, Link, useFetcher, useSubmit } from '@remix-run/react';
 
 function ExpenseListItem({ id, title, amount }) {
+  // const submit = useSubmit();
+  const fetcher = useFetcher();
   function deleteExpenseItemHandler() {
-    // tbd
+    // useSubmit(null,{
+    //   method: 'delete',
+    //   action: `/expenses/${id}`,
+    // });
+    fetcher.submit(null,
+       { method: 'delete',
+        action: `/expenses/${id}`,
+       });
   }
 
   return (
@@ -12,10 +21,10 @@ function ExpenseListItem({ id, title, amount }) {
         <p className="expense-amount">${amount.toFixed(2)}</p>
       </div>
       <menu className="expense-actions">
-        {/* <button onClick={deleteExpenseItemHandler}>Delete</button> */}
-        <Form method="delete" action={`/expenses/${id}`}>
+        <button onClick={deleteExpenseItemHandler}>Delete</button>
+        {/* <Form method="delete" action={`/expenses/${id}`}>
           <button>Delete</button>
-        </Form>
+        </Form> */}
         <button>Delete</button>
         <Link to={id}>Edit</Link>
       </menu>
