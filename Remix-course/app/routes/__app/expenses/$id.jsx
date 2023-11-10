@@ -38,13 +38,13 @@ export async function action({params, request}) {
     try {
         validateExpenseInput(expenseData);
     } catch (error) {
-            return error;
+      return error;
     }
 
-    await updateExpense(expenseId, expenseData);
-    return redirect('/expenses');
+      await updateExpense(expenseId, expenseData);
+      return redirect('/expenses');
     } else if(request.method === 'DELETE'){
-        await deleteExpense(expenseId);
-        // return ( deletedId: expenseId );
+      await deleteExpense(expenseId);
+      return (deletedId: expenseId);
     }
 }
