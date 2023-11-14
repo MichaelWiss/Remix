@@ -1,12 +1,17 @@
-import { Link, useSearchParams } from '@remix-run/react';
+import { Link, useSearchParams, useNavigation } from '@remix-run/react';
 import { FaLock, FaUserPlus } from 'react-icons/fa';
 
 function AuthForm() {
   const [searchParams] = useSearchParams();
+  const navigation = useNavigation();
+
   const authMode = searchParams.get('mode') || 'login';
 
   const submitBtnCaption = authMode === 'login' ? 'Login' : 'Create User';
-  const toggleBtnCaption = authMode === 'login' ? 'Create a new user' : 'Log in with existing User';
+  const toggleBtnCaption = 
+    authMode === 'login' ? 'Create a new user' : 'Log in with existing User';
+
+    const isSubmitting = navigation.state !== 'idle';
 
 
   return (
