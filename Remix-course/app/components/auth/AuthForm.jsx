@@ -10,7 +10,7 @@ function AuthForm() {
 
 
   return (
-    <form method="post" className="form" id="auth-form">
+    <Form method="post" className="form" id="auth-form">
       <div className="icon-img">
         {authMode === 'login' ? <FaLock /> : <FaUserPlus />}
       </div>
@@ -26,7 +26,7 @@ function AuthForm() {
         <button>Login</button>
         <Link to={authMode === 'login' ? '?mode=signup' : '?mode=login'}>{toggleBtnCaption}</Link>
       </div>
-    </form>
+    </Form>
   );
 }
 
