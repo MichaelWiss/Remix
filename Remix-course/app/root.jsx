@@ -17,10 +17,11 @@ export const meta = () => ({
   viewport: "width=device-width,initial-scale-1",
 });
 
-export default function App() {
+function Document({title, children}) {
   return (
     <html lang="en">
       <head>
+        <title>{title}</title>
         <Meta />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
@@ -35,13 +36,35 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <Outlet />
+        {children}
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
       </body>
     </html>
   );
+}
+
+export default function App() {
+  return (
+    <Document>
+      <Outlet />
+    </Document>
+  );
+}
+
+export function CatchBoundry() {
+    return (
+    <Document>
+      <main>
+        <Error></Error>
+      </main>
+    </Document>
+    );
+  }
+
+export function ErrorBoundry() {
+
 }
 
 export function links() {
