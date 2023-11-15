@@ -28,8 +28,9 @@ function AuthForm() {
         <input type="password" id="password" name="password" minLength={7} />
       </p>
       <div className="form-actions">
-        <button>Login</button>
-        <Link to={authMode === 'login' ? '?mode=signup' : '?mode=login'}>{toggleBtnCaption}</Link>
+        <button disabled={isSubmitting}>{isSubmitting ? 'Authenticating...' : submitBtnCaption}</button>
+        <Link to={authMode === 'login' ? '?mode=signup' : '?mode=login'}>
+          {toggleBtnCaption}</Link>
       </div>
     </Form>
   );
