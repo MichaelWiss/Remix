@@ -9,8 +9,8 @@ import {
   Scripts,
   ScrollRestoration,
   isRouteErrorResponse,
-  useCatch,
   useRouteError,
+  useCatch,
 } from "@remix-run/react";
 
 import sharedStyles from '~/styles/shared.css';
@@ -71,9 +71,22 @@ export default function App() {
 //     </Document>
 //   }
 
+  // export function ErrorBoundary({error}) {
+  //   return ( 
+  //   <Document title="An error occurred">
+  //     <main>
+  //       <Error title="An error occurred">
+  //        <p>{error.message || 'Something went wrong.  Try Again'}</p>
+  //       <p>Back to <Link to="/">safety</Link>.</p>
+  //       </Error>
+  //         </main>
+  //   </Document>
+  //     );
+  // }
+
   export function ErrorBoundary() {
     const error = useRouteError();
-   
+    
     if (isRouteErrorResponse(error)) {
       return (
         <Document title={error.statusText}>
