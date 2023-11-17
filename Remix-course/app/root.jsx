@@ -14,7 +14,7 @@ import {
 } from "@remix-run/react";
 
 import sharedStyles from '~/styles/shared.css';
-import Error from './components/util/Error';
+// import Error from './components/util/Error';
 
 export const meta = () => ({
   charset: 'utf-8',
