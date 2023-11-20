@@ -58,40 +58,29 @@ export default function App() {
   );
 }
 
-// export function CatchBoundary() {
-//   const caughtResponse = useCatch();
+export function CatchBoundary() {
+  const caughtResponse = useCatch();
   
-//     return <Document title={caughtResponse.statusText}>
-//       <main>
-//         <Error title={caughtResponse.statusText}>
-//           <p>{caughtResponse.data?.message || 'Something went wrong.  Try Again'}</p>
-//           <p>Back to <Link to="/">safety</Link>.</p>
-//         </Error>
-//       </main>
-//     </Document>
-//   }
+    return <Document title={caughtResponse.statusText}>
+      <main>
+        <Error title={caughtResponse.statusText}>
+          <p>{caughtResponse.data?.message || 'Something went wrong.  Try Again'}</p>
+          <p>Back to <Link to="/">safety</Link>.</p>
+        </Error>
+      </main>
+    </Document>
+  }
 
-  // export function ErrorBoundary({error}) {
-  //   return ( 
-  //   <Document title="An error occurred">
-  //     <main>
-  //       <Error title="An error occurred">
-  //        <p>{error.message || 'Something went wrong.  Try Again'}</p>
-  //       <p>Back to <Link to="/">safety</Link>.</p>
-  //       </Error>
-  //         </main>
-  //   </Document>
-  //     );
-  // }
+ 
 
   export function ErrorBoundary() {
     const error = useRouteError();
-    
+      console.error(error);
     if (isRouteErrorResponse(error)) {
       return (
         <Document title={error.statusText}>
           <main>
-            <Error title={error.statusText}>
+            <p title={error.statusText}>
               <p>
                 {error.data?.message ||
                   "Something went wrong, please try again later!"}
@@ -99,7 +88,7 @@ export default function App() {
               <p>
                 Back to <Link to="/">safety</Link>.
               </p>
-            </Error>
+            </p>
           </main>
         </Document>
       );
