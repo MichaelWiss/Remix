@@ -1,3 +1,4 @@
+import React from 'react';
 import { cssBundleHref } from "@remix-run/css-bundle";
 
 import {
@@ -58,18 +59,18 @@ export default function App() {
   );
 }
 
-export function CatchBoundary() {
-  const caughtResponse = useCatch();
+// export function CatchBoundary() {
+//   const caughtResponse = useCatch();
   
-    return <Document title={caughtResponse.statusText}>
-      <main>
-        <Error title={caughtResponse.statusText}>
-          <p>{caughtResponse.data?.message || 'Something went wrong.  Try Again'}</p>
-          <p>Back to <Link to="/">safety</Link>.</p>
-        </Error>
-      </main>
-    </Document>
-  }
+//     return <Document title={caughtResponse.statusText}>
+//       <main>
+//         <Error title={caughtResponse.statusText}>
+//           <p>{caughtResponse.data?.message || 'Something went wrong.  Try Again'}</p>
+//           <p>Back to <Link to="/">safety</Link>.</p>
+//         </Error>
+//       </main>
+//     </Document>
+//   }
 
  
 
@@ -80,7 +81,7 @@ export function CatchBoundary() {
       return (
         <Document title={error.statusText}>
           <main>
-            <p title={error.statusText}>
+            <Error title={error.statusText}>
               <p>
                 {error.data?.message ||
                   "Something went wrong, please try again later!"}
@@ -88,7 +89,7 @@ export function CatchBoundary() {
               <p>
                 Back to <Link to="/">safety</Link>.
               </p>
-            </p>
+            </Error>
           </main>
         </Document>
       );
