@@ -11,7 +11,7 @@ import {
   ScrollRestoration,
   isRouteErrorResponse,
   useRouteError,
-  useCatch,
+  // useCatch,
 } from "@remix-run/react";
 
 import sharedStyles from '~/styles/shared.css';
@@ -51,13 +51,13 @@ function Document({title, children}) {
   );
 }
 
-export default function App() {
-  return (
-    <Document>
-      <Outlet />
-    </Document>
-  );
-}
+// export default function App() {
+//   return (
+//     <Document>
+//       <Outlet />
+//     </Document>
+//   );
+// }
 
 // export function CatchBoundary() {
 //   const caughtResponse = useCatch();
@@ -71,6 +71,14 @@ export default function App() {
 //       </main>
 //     </Document>
 //   }
+
+export default function App() {
+  return (
+    <Document>
+      <Outlet />
+    </Document>
+  );
+}
 
  
 
