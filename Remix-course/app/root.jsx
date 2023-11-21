@@ -51,13 +51,13 @@ function Document({title, children}) {
   );
 }
 
-// export default function App() {
-//   return (
-//     <Document>
-//       <Outlet />
-//     </Document>
-//   );
-// }
+export default function App() {
+  return (
+    <Document>
+      <Outlet />
+    </Document>
+  );
+}
 
 // export function CatchBoundary() {
 //   const caughtResponse = useCatch();
@@ -72,13 +72,7 @@ function Document({title, children}) {
 //     </Document>
 //   }
 
-export default function App() {
-  return (
-    <Document>
-      <Outlet />
-    </Document>
-  );
-}
+
 
  
 

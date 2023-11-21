@@ -53,7 +53,7 @@ export async function updateExpense(id, expenseData) {
 export async function deleteExpense(id) {
   try {
     await prisma.expense.delete({
-      where: {id}
+      where: {id: 'abc'}
     });
   } catch (error) {
     console.log(error);
