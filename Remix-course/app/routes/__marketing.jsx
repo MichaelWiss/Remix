@@ -3,10 +3,12 @@ import MainHeader from '~/components/navigation/MainHeader';
 import marketingStyles from '~/styles/marketing.css';
 
 export default function MarketingLayout() {
-    return <>
+    return (
+    <>
      <MainHeader />
      <Outlet />;
-     </>;
+     </>
+    );
 }
 
 export function links() {
