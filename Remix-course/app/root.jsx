@@ -9,9 +9,9 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
-  isRouteErrorResponse,
-  useRouteError,
-  // useCatch,
+  // isRouteErrorResponse,
+  // useRouteError,
+  useCatch,
 } from "@remix-run/react";
 
 import sharedStyles from '~/styles/shared.css';
@@ -59,44 +59,44 @@ export default function App() {
   );
 }
 
-// export function CatchBoundary() {
-//   const caughtResponse = useCatch();
+export function CatchBoundary() {
+  const caughtResponse = useCatch();
   
-//     return <Document title={caughtResponse.statusText}>
-//       <main>
-//         <Error title={caughtResponse.statusText}>
-//           <p>{caughtResponse.data?.message || 'Something went wrong.  Try Again'}</p>
-//           <p>Back to <Link to="/">safety</Link>.</p>
-//         </Error>
-//       </main>
-//     </Document>
-//   }
+    return <Document title={caughtResponse.statusText}>
+      <main>
+        <Error title={caughtResponse.statusText}>
+          <p>{caughtResponse.data?.message || 'Something went wrong.  Try Again'}</p>
+          <p>Back to <Link to="/">safety</Link>.</p>
+        </Error>
+      </main>
+    </Document>
+  }
 
 
 
  
 
-  export function ErrorBoundary() {
-    const error = useRouteError();
-      console.error(error);
-    if (isRouteErrorResponse(error)) {
-      return (
-        <Document title={error.statusText}>
-          <main>
-            <Error title={error.statusText}>
-              <p>
-                {error.data?.message ||
-                  "Something went wrong, please try again later!"}
-              </p>
-              <p>
-                Back to <Link to="/">safety</Link>.
-              </p>
-            </Error>
-          </main>
-        </Document>
-      );
-    }
-  }
+  // export function ErrorBoundary() {
+  //   const error = useRouteError();
+  //     console.error(error);
+  //   if (isRouteErrorResponse(error)) {
+  //     return (
+  //       <Document title={error.statusText}>
+  //         <main>
+  //           <Error title={error.statusText}>
+  //             <p>
+  //               {error.data?.message ||
+  //                 "Something went wrong, please try again later!"}
+  //             </p>
+  //             <p>
+  //               Back to <Link to="/">safety</Link>.
+  //             </p>
+  //           </Error>
+  //         </main>
+  //       </Document>
+  //     );
+  //   }
+  // }
 
 export function links() {
   return [{ rel: 'stylesheet', href: sharedStyles }];

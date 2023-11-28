@@ -12,7 +12,7 @@ module.exports = {
   serverModuleFormat: "cjs",
   future: {
     v2_dev: false,
-    v2_errorBoundary: false,
+    v2_errorBoundary: true,
     v2_headers: false,
     v2_meta: false,
     v2_normalizeFormMethod: false,
